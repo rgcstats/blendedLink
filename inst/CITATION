@@ -1,0 +1,9 @@
+citHeader("To cite the survey package in publications use:")
+
+citEntry(entry="misc",
+   author="Robert Graham Clark",
+   year=2016,
+   title="blendedLink: A New Link Function that Blends Two Specified Link Functions",
+   note="R package version 0.1",
+   textVersion="Robert Graham Clark (2016) \"blendedLink: A New Link Function that Blends Two Specified Link Functions\". R package version 0.1." )
+
