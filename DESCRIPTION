@@ -1,0 +1,12 @@
+Package: blendedLink
+Type: Package
+Title: A New Link Function for Binary Regression that Smoothly Combines the Log and Logit Functions
+Version: 0.1
+Date: 2015-12-22
+Author: Robert Clark
+Maintainer: "Robert Clark" <rclark@uow.edu.au>
+Imports: stats
+Description: A new link Function that equals the log function up to a cutover then a scaled logit function. For use in glm() or glm2().
+License: GPL-2 | GPL-3
+LazyData: TRUE
+RoxygenNote: 5.0.1
