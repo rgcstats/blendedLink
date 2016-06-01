@@ -27,7 +27,8 @@ pvalue.cutover <- function(data,formula,link1,link2,cutover0){
     glm(formula=formula,data=data,
          family=binomial(blendedLink(link1,link2,cutover)))$deviance
   }
-  deviance.optcutover <- optimize(f=deviance.cutover,interval=c(0,1))$objective
+  eps <- 0.01
+  deviance.optcutover <- optimize(f=deviance.cutover,interval=c(eps,1-eps))$objective
   deviance.cutover0 <- glm(formula=formula,data=data,
                            family=binomial(blendedLink(link1,link2,cutover0)))$deviance
   pchisq(deviance.cutover0-deviance.optcutover,df=1,lower.tail=F)
