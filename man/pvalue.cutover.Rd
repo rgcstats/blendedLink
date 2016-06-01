@@ -5,7 +5,7 @@
 \title{p-value of hypothesis test that the cutover of a blended link is equal to
 a specific value}
 \usage{
-pvalue.cutover(data, formula, link1, link2, cutover0)
+pvalue.cutover(data, formula, link1, link2, cutover0, eps = 0)
 }
 \arguments{
 \item{data}{a data frame containing the variables in the model.}
@@ -20,6 +20,10 @@ see help(glm)}
 \item{cutover0}{The hypothesized value of the cutover at which the link
 function switches smoothly from link1 to link2. Must be strictly greater 
 than 0 and strictly less than 1.}
+
+\item{eps}{A tuning parameter. The MLE of the cutover is restricted to the range
+eps to (1-eps). Usually eps=0 is appropriate, but occasionally a small positive value
+may be needed to avoid numerical problems in the maximisation of the likelihood.}
 }
 \value{
 The p-value of a test of the null hypothesis that cutover=cutover0.
