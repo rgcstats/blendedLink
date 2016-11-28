@@ -1,8 +1,8 @@
 Package: blendedLink
 Type: Package
 Title: A New Link Function that Blends Two Specified Link Functions
-Version: 0.1
-Date: 2016-05-30
+Version: 0.2
+Date: 2016-11-28
 Author: Robert Clark
 Maintainer: "Robert Clark" <rclark@uow.edu.au>
 Imports: stats

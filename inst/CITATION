@@ -1,4 +1,4 @@
-citHeader("To cite the survey package in publications use:")
+citHeader("To cite the blendedLink package in publications use:")
 
 citEntry(entry="misc",
    author="Robert Graham Clark",

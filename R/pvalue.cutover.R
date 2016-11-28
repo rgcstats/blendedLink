@@ -31,8 +31,15 @@ pvalue.cutover <- function(data,formula,link1,link2,cutover0,eps=0){
          family=binomial(blendedLink(link1,link2,cutover)))$deviance
   }
   eps <- 0.025
-  deviance.optcutover <- optimize(f=deviance.cutover,interval=c(eps,1-eps))$objective
-  deviance.cutover0 <- glm(formula=formula,data=data,
-                           family=binomial(blendedLink(link1,link2,cutover0)))$deviance
-  pchisq(deviance.cutover0-deviance.optcutover,df=1,lower.tail=F)
+  mle.results <- optimize(f=deviance.cutover,interval=c(eps,1-eps))
+  deviance.optcutover <- mle.results$objective
+  fit.mle <- glm(formula=formula,data=data,
+                 family=binomial(blendedLink(link1,link2,mle.results$minimum)))
+  fit0 <- glm(formula=formula,data=data,
+              family=binomial(blendedLink(link1,link2,cutover0)))
+  deviance.cutover0 <- fit0$deviance
+  pval <- pchisq(deviance.cutover0-deviance.optcutover,df=1,lower.tail=F)
+  max.diff.fv <- max(abs(fit.mle$fitted.values-fit0$fitted.values))
+  list(fit0=fit0,fit1=fit.mle,fv0=fit0$fitted.values,fv1=fit.mle$fitted.values,pval=pval,max.diff.fv=max.diff.fv,
+       optcut=mle.results$minimum)
 }
