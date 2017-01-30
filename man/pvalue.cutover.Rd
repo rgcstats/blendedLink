@@ -5,7 +5,7 @@
 \title{p-value of hypothesis test that the cutover of a blended link is equal to
 a specific value}
 \usage{
-pvalue.cutover(data, formula, link1, link2, cutover0, eps = 0)
+pvalue.cutover(data, formula, link1, link2, cutover0, eps = 0.01)
 }
 \arguments{
 \item{data}{a data frame containing the variables in the model.}

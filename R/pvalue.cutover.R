@@ -25,12 +25,11 @@
 #' pvalue.cutover(y~x1+x2 , data=loglogit.example,link1="log",link2="logit",
 #' cutover0=0.8)
 #' @export
-pvalue.cutover <- function(data,formula,link1,link2,cutover0,eps=0){
+pvalue.cutover <- function(data,formula,link1,link2,cutover0,eps=0.01){
   deviance.cutover <- function(cutover){
     glm(formula=formula,data=data,
          family=binomial(blendedLink(link1,link2,cutover)))$deviance
   }
-  eps <- 0.025
   mle.results <- optimize(f=deviance.cutover,interval=c(eps,1-eps))
   deviance.optcutover <- mle.results$objective
   fit.mle <- glm(formula=formula,data=data,
